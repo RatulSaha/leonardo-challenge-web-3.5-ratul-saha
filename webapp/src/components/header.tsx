@@ -39,7 +39,7 @@ export const Header = () => {
         {username && jobTitle && (
           <Popover.Root>
             <Popover.Trigger asChild>
-                <Button size="sm" variant="outline">
+                <Button size="sm" variant="outline" px="4">
                   Your profile
                 </Button>
             </Popover.Trigger>
