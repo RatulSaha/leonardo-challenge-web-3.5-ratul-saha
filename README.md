@@ -27,7 +27,7 @@ Output and findings (if any):
 
 Success criteria:
 
-- [ ] Home page is setup.
+- [x] Home page is setup.
 - [ ] The `/information` page is created with test content.
 - [ ] The `/information` page can be accessed only if the user provides username and job title.
 - [ ] The `/auth` page is created to capture the username and job title.
