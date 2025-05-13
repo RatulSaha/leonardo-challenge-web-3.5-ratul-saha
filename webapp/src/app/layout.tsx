@@ -8,12 +8,8 @@ import { UserContext } from "@/context/UserContext";
 import { getAuthFromLocalStorage } from "@/lib/authFromLocalStorage";
 import { defaultSystem } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
-
-export const apolloClient = new ApolloClient({
-  uri: "https://rickandmortyapi.com/graphql",
-  cache: new InMemoryCache(),
-});
+import { ApolloProvider } from '@apollo/client';
+import { apolloClient } from "@/context/apolloContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

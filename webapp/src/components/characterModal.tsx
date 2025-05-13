@@ -2,7 +2,7 @@
 import { GET_CHARACTER } from "@/graphql/characters";
 import { Badge, Box, Card, CloseButton, Dialog, Image, Portal, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { apolloClient } from "@/app/layout";
+import { apolloClient } from "@/context/apolloContext";
 
 type FullCharacterData = {
     id: string;

@@ -5,6 +5,8 @@ import { useQuery } from "@apollo/client";
 import { Box, Text, ButtonGroup, IconButton, Pagination, Grid } from "@chakra-ui/react";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { EpisodeCard, EpisodeData } from "./episodeCard";
+import { useState } from "react";
+import { EpisodeModal } from "./episodeModal";
 
 interface EpisodesListProps {
     episodesPage: number;
@@ -12,6 +14,7 @@ interface EpisodesListProps {
 }
 
 export const EpisodesList = ({ episodesPage, changeEpisodePage }: EpisodesListProps) => {
+    const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
     const { loading, error, data } = useQuery(GET_EPISODES, {
         variables: { page: episodesPage },
     });
@@ -31,7 +34,14 @@ export const EpisodesList = ({ episodesPage, changeEpisodePage }: EpisodesListPr
                 gap={1}
             >
                 {results.map((episode: EpisodeData) => (
-                    <EpisodeCard key={episode.id} episode={episode} />
+                    <Box 
+                        onClick={() => setSelectedItemId(episode.id)}
+                        key={episode.id}
+                        cursor="pointer"
+                        _hover={{ transform: 'scale(1.02)', transition: 'transform 0.2s' }}
+                    >
+                        <EpisodeCard key={episode.id} episode={episode} />
+                    </Box>
                 ))}
             </Grid>
             <Box mt={4} display="flex" justifyContent="center">
@@ -59,6 +69,7 @@ export const EpisodesList = ({ episodesPage, changeEpisodePage }: EpisodesListPr
                     </ButtonGroup>
                 </Pagination.Root>
             </Box>
+            <EpisodeModal selectedItemId={selectedItemId} />
         </Box>
     );
 }; 

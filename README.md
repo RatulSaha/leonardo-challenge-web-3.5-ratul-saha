@@ -110,5 +110,7 @@ Potential improvements:
 
 - [ ] The list of episodes in the character modal needs better handling when there are too many episodes for a character. Similar for when a location has too many residents.
 
+- [ ] Known bug: If a modal is opened (let's say character), and then closed, and the user moves to a different page, the previous modal pops up in some cases uninvited.
+
 
 

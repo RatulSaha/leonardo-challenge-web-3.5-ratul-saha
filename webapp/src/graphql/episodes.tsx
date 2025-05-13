@@ -16,3 +16,19 @@ export const GET_EPISODES = gql`
     }
   }
 `;
+
+export const GET_EPISODE = gql`
+  query GetEpisode($id: ID!) {
+    episode(id: $id) {
+      id
+      name
+      episode
+      air_date
+      characters {
+        id
+        name
+      }
+      created
+    }
+  }
+`;
