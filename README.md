@@ -91,7 +91,7 @@ Success criteria:
 
 Output and findings (if any):
 
-- Deployed URL: Not deployed yet.
+- [Deployed URL](https://leonardo-challenge-web-3-5-ratul-saha.vercel.app/).
 - Comments: None.
 
 Potential improvements:
@@ -114,4 +114,6 @@ Potential improvements:
 
 - [ ] The number of items in a page of characters is 20 (can't change in the API call, it seems), which may make the alignment look a tad bit odd.
 
-- [ ] Nice to have: Skeleton for individual card when the data is loading.
+- [x] Nice to have: Skeleton for individual card when the data is loading. Done, but could be better.
+
+- [ ] Filters for each type can be added quite easily (and with persistent memory in URL).

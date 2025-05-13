@@ -7,6 +7,7 @@ import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { LocationCard, LocationData } from "./locationCard";
 import { useState } from "react";
 import { LocationModal } from "./locationModal";
+import { SkeletonCardLocation } from "./skeletonCard";
 
 interface LocationsListProps {
     locationsPage: number;
@@ -19,7 +20,22 @@ export const LocationsList = ({ locationsPage, changeLocationPage }: LocationsLi
         variables: { page: locationsPage },
     });
 
-    if (loading) return <Text>Loading...</Text>;
+    if (loading) return (
+        <Grid 
+            templateColumns={{
+                base: "1fr",
+                md: "repeat(3, 1fr)",
+                lg: "repeat(4, 1fr)",
+            }} 
+            gap={1}
+        >
+            {[...Array(20)].map((_, index) => (
+                <Box key={index}>
+                    <SkeletonCardLocation />
+                </Box>
+            ))}
+        </Grid>
+    );
     if (error) return <Text>Sorry, something went wrong.</Text>;
 
     const { info, results } = data.locations;

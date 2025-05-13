@@ -7,6 +7,7 @@ import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { EpisodeCard, EpisodeData } from "./episodeCard";
 import { useState } from "react";
 import { EpisodeModal } from "./episodeModal";
+import { SkeletonCardEpisode } from "./skeletonCard";
 
 interface EpisodesListProps {
     episodesPage: number;
@@ -19,7 +20,22 @@ export const EpisodesList = ({ episodesPage, changeEpisodePage }: EpisodesListPr
         variables: { page: episodesPage },
     });
 
-    if (loading) return <Text>Loading...</Text>;
+    if (loading) return (
+        <Grid 
+            templateColumns={{
+                base: "1fr",
+                md: "repeat(3, 1fr)",
+                lg: "repeat(4, 1fr)",
+            }} 
+            gap={1}
+        >
+            {[...Array(20)].map((_, index) => (
+                <Box key={index}>
+                    <SkeletonCardEpisode />
+                </Box>
+            ))}
+        </Grid>
+    );
     if (error) return <Text>Sorry, something went wrong.</Text>;
 
     const { info, results } = data.episodes;
