@@ -1,0 +1,73 @@
+# leonardo-challenge-web-3.5
+
+This repository contains the code for v3.5 challenge from the Web Team at Leonardo AI. Submitted by Ratul Saha.
+
+## Project details
+
+This project showcases information from The Rick and Morty world (a popular animated science fiction sitcom) in a fast, responsive, web application. The conditions to be met can be found in the challenge brief (not included in this README).
+
+## Milestones
+
+### v0.1: Basics and CI/CD setup
+
+Success criteria:
+
+- [ ] The minimal technical requirements are installed. Bare installation is fine. This will include (1) [Next.js 15](https://nextjs.org/), (2) [ChakraUI](https://chakra-ui.com/), (3) [Apollo Client](https://www.apollographql.com/docs/react).
+- [ ] The CI/CD is deployed and tested with [Vercel](https://vercel.com) (free tier).
+
+Output and findings (if any):
+
+- Deployed URL.
+- GitHub at this point.
+- Comments: None.
+
+### v0.2: The required pages with auth set up.
+
+Success criteria:
+
+- [ ] Home page is setup.
+- [ ] The `/information` page is created with test content.
+- [ ] The `/information` page can be accessed only if the user provides username and job title.
+- [ ] The `/auth` page is created to capture the username and job title.
+- [ ] The username can only include alphanumeric and the job title can be free flow text. Both will have a limit of 32 characters.
+- [ ] The "auth" info will be stored in localstorage so that it is persisted over a session.
+- [ ] From the `/auth` page, once the user details are saved, the users will be automatically forwarded to the `/information` page.
+- [ ] Only the "auth'ed" user (i.e., those who submitted username and job title) can access the content in the `/information` page. This check will be more rigourously checked once the API is wired up in later milestones.
+- [ ] Separate `/404` and `/500` pages will be created to capture non-existent pages (404 error) and if a page render goes wrong with 500 error.
+
+Output and findings (if any):
+
+- Deployed URL: Not deployed yet.
+- Comments: None.
+
+### v0.3: The information is listed without the ability to expand.
+
+Success criteria:
+
+- [ ] [The GraphQL API](https://rickandmortyapi.com/documentation/#graphql) is wired up with the FE at `/information`. Note that the GraphQL is implemented in FE and not server-side.
+- [ ] Three buttons provided to switch between Character, Location, and Episode (called `type` from now on).
+- [ ] Once a type is selected, the user is able to see list of items of that particular type. The URL should be of structure `type={type}&page={pagenumber}`.
+- [ ] A prev and next button is provided to paginate through the content. The prev and next buttons should be disabled accordingly when there are no content.
+
+Output and findings (if any):
+
+- Deployed URL: Not deployed yet.
+- Comments: None.
+
+### v1.0: Individual information of a type can be opened by click
+
+Success criteria:
+
+- [ ] Individual item can be clicked and a modal will open with all the details of the individual content.
+- [ ] After v0.3, more details about which field to be added in the modal will be listed here.
+- [ ] The content for the modal will be requested only after an item is clicked.
+- [ ] The modal can be closed without losing the pagination.
+
+Output and findings (if any):
+
+- Deployed URL: Not deployed yet.
+- Comments: None.
+
+Stray findings:
+
+- [ ]
