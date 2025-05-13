@@ -7,6 +7,7 @@ import { useContext, useEffect, useState } from "react";
 import { Tabs } from "@chakra-ui/react"
 import { CharactersList } from "@/components/charactersList";
 import { LocationsList } from "@/components/locationsList";
+import { EpisodesList } from "@/components/episodesList";
 
 type UserState = {
   characters: { page: number };
@@ -76,7 +77,7 @@ export default function Explore() {
             <LocationsList locationsPage={locationsPage} changeLocationPage={setLocationsPage} />
           </Tabs.Content>
           <Tabs.Content value="episodes">
-            {/* <EpisodesList page={episodesPage} /> */}
+            <EpisodesList episodesPage={episodesPage} changeEpisodePage={setEpisodesPage} />
           </Tabs.Content>
         </Tabs.Root>
       </div>
