@@ -1,9 +1,14 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Provider from "./chakra-provider";
+import Provider from "../context/chakraContext";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { UserContext } from "@/context/UserContext";
+import { getAuthFromLocalStorage } from "@/lib/authFromLocalStorage";
+import { defaultSystem } from "@chakra-ui/react";
+import { ChakraProvider } from "@chakra-ui/react";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -14,25 +19,29 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Rick and Morty World",
-  description: "A web app to explore the Rick and Morty universe",
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+  const { username, jobTitle } = getAuthFromLocalStorage();
+
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
-        <Provider>
-          <Header />
-          {children}
-          <Footer />
-        </Provider>
-      </body>
+      <head>
+        <title>Rick and Morty World</title>
+        <meta name="description" content="A web app to explore the Rick and Morty universe" />
+      </head>
+      <UserContext.Provider value={{ username: username ?? null, jobTitle: jobTitle ?? null }}>
+        <body className={`${geistSans.variable} ${geistMono.variable}`} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+          <ChakraProvider value={defaultSystem}>
+            <Header />
+            {children}
+            <Footer />
+          </ChakraProvider>
+        </body>
+      </UserContext.Provider>
     </html>
   );
 }
