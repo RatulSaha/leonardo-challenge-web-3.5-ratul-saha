@@ -1,4 +1,4 @@
-import { Box, Card, Image, Text, Button } from "@chakra-ui/react";
+import { Box, Card, Image, Text, Button, Badge, HStack } from "@chakra-ui/react";
 
 export interface CharacterData {
     id: string;
@@ -10,26 +10,24 @@ export interface CharacterData {
 
 export const CharacterCard = ({ character }: { character: CharacterData }) => {
     return (
-        <Card.Root maxW="200px" m={4} overflow="hidden">
+        <Card.Root flexDirection="row" overflow="hidden" maxW="xl" m={4}>
             <Image
-                src={character.image}
-                alt={character.name}
-                width="100%"
-                height="100%"
+            objectFit="cover"
+            maxW="150px"
+            src={character.image}
+            alt={character.name}
             />
-            <Card.Body gap="2" p={2}>
-                <Card.Title>{character.name}</Card.Title>
-                {/* <Card.Description>
-                    {character.status}
-                </Card.Description>
-                <Text textStyle="2xl" fontWeight="medium" letterSpacing="tight" mt="2">
-                    {character.species}
-                </Text> */}
-            </Card.Body>
-            {/* <Card.Footer gap="2">
-                <Button variant="solid">Buy now</Button>
-                <Button variant="ghost">Add to cart</Button>
-            </Card.Footer> */}
-            </Card.Root>
+            <Box>
+                <Card.Body p="2">
+                    <Card.Title mb="2">{character.name}</Card.Title>
+                    <Card.Description>
+                        {character.species}
+                    </Card.Description>
+                    <HStack mt="4">
+                        <Badge px="2" py="1">{character.status}</Badge>
+                    </HStack>
+                </Card.Body>
+            </Box>
+        </Card.Root>
     );
 };

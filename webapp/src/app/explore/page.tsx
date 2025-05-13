@@ -54,7 +54,7 @@ export default function Explore() {
 
   return (
     <Box p={4} maxW="1200px" mx="auto">
-      <Heading size="xl" mb={6}>Explore the Rick and Morty Universe</Heading>
+      <Heading size="2xl" mb={6} p={4} textAlign="center">Explore the Rick and Morty Universe</Heading>
       <div>
         <Tabs.Root defaultValue={type} onValueChange={(e) => triggerTabChange(e.value)}>
           <Tabs.List>

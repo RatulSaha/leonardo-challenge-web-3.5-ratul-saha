@@ -2,7 +2,7 @@
 
 import { GET_CHARACTERS } from "@/graphql/characters";
 import { useQuery } from "@apollo/client";
-import { Box, Text, ButtonGroup, IconButton, Pagination } from "@chakra-ui/react";
+import { Box, Text, ButtonGroup, IconButton, Pagination, Grid } from "@chakra-ui/react";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { CharacterCard } from "./characterCard";
 import { useState } from "react";
@@ -15,41 +15,47 @@ interface CharactersListProps {
 export const CharactersList = ({ charactersPage, changeCharacterPage }: CharactersListProps) => {
     const { loading, error, data } = useQuery(GET_CHARACTERS, {
         variables: { page: charactersPage },
-      });
+    });
 
     if (loading) return <Text>Loading...</Text>;
     if (error) return <Text>Sorry, something went wrong.</Text>;
 
-    console.log("data", data);
     const { info, results } = data.characters;
     return (
         <Box>
-            <Box p={4} mt={4} display="flex" flexWrap="wrap" justifyContent="flex-start">
+            <Grid 
+                templateColumns={{
+                    base: "1fr",
+                    md: "repeat(2, 1fr)",
+                    lg: "repeat(3, 1fr)",
+                }} 
+                gap={1}
+            >
                 {results.map((character: any) => (
-                    <CharacterCard character={character} />
+                    <CharacterCard key={character.id} character={character} />
                 ))}
-            </Box>
-            <Box p={4} mt={4}>
+            </Grid>
+            <Box mt={4} display="flex" justifyContent="center">
                 <Pagination.Root count={info.count} pageSize={20} defaultPage={charactersPage} onPageChange={(data) => changeCharacterPage(data.page)}>
                     <ButtonGroup variant="ghost" size="sm">
                         <Pagination.PrevTrigger asChild>
-                        <IconButton>
-                            <LuChevronLeft />
-                        </IconButton>
+                            <IconButton>
+                                <LuChevronLeft />
+                            </IconButton>
                         </Pagination.PrevTrigger>
 
                         <Pagination.Items
-                        render={(page) => (
-                            <IconButton variant={{ base: "outline", _selected: "solid" }}>
-                                {page.value}
-                            </IconButton>
-                        )}
+                            render={(page) => (
+                                <IconButton variant={{ base: "outline", _selected: "solid" }}>
+                                    {page.value}
+                                </IconButton>
+                            )}
                         />
 
                         <Pagination.NextTrigger asChild>
-                        <IconButton>
-                            <LuChevronRight />
-                        </IconButton>
+                            <IconButton>
+                                <LuChevronRight />
+                            </IconButton>
                         </Pagination.NextTrigger>
                     </ButtonGroup>
                 </Pagination.Root>
