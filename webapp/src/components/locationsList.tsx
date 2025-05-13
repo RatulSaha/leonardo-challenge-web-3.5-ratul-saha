@@ -13,7 +13,7 @@ interface LocationsListProps {
 }
 
 export const LocationsList = ({ locationsPage, changeLocationPage }: LocationsListProps) => {
-    const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
+    // const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
     const { loading, error, data } = useQuery(GET_LOCATIONS, {
         variables: { page: locationsPage },
     });

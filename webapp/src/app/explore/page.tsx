@@ -45,7 +45,7 @@ function ExploreContent() {
     if (newHashedParam !== hashedParam) {
       router.push(`/explore?q=${newHashedParam}`);
     }
-  }, [charactersPage, locationsPage, episodesPage, type, router]);
+  }, [charactersPage, locationsPage, episodesPage, type, router, hashedParam]);
 
   const triggerTabChange = (value: string) => {
     setType(value);

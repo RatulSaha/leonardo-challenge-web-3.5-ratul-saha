@@ -37,6 +37,7 @@ export const CharactersList = ({ charactersPage, changeCharacterPage }: Characte
                 {results.map((character: CharacterData) => (
                     <Box 
                         onClick={() => setSelectedItemId(character.id)}
+                        key={character.id}
                         cursor="pointer"
                         _hover={{ transform: 'scale(1.02)', transition: 'transform 0.2s' }}
                     >
