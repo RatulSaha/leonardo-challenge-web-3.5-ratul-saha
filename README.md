@@ -1,4 +1,4 @@
-# leonardo-challenge-web-3.5
+# leonardo-challenge-web-3.5-ratul-saha
 
 This repository contains the code for v3.5 challenge from the Web Team at Leonardo AI. Submitted by Ratul Saha.
 
@@ -6,18 +6,20 @@ This repository contains the code for v3.5 challenge from the Web Team at Leonar
 
 This project showcases information from The Rick and Morty world (a popular animated science fiction sitcom) in a fast, responsive, web application. The conditions to be met can be found in the challenge brief (not included in this README).
 
+[The final deployment](https://leonardo-challenge-web-3-5-ratul-saha.vercel.app/).
+
 ## Milestones
 
 ### v0.1: Basics and CI/CD setup
 
 Success criteria:
 
-- [ ] The minimal technical requirements are installed. Bare installation is fine. This will include (1) [Next.js 15](https://nextjs.org/), (2) [ChakraUI](https://chakra-ui.com/), (3) [Apollo Client](https://www.apollographql.com/docs/react).
-- [ ] The CI/CD is deployed and tested with [Vercel](https://vercel.com) (free tier).
+- [x] The minimal technical requirements are installed. Bare installation is fine. This will include (1) [Next.js 15](https://nextjs.org/), (2) [ChakraUI](https://chakra-ui.com/), (3) [Apollo Client](https://www.apollographql.com/docs/react).
+- [x] The CI/CD is deployed and tested with [Vercel](https://vercel.com) (free tier).
 
 Output and findings (if any):
 
-- Deployed URL.
+- [Deployed URL](https://leonardo-challenge-web-3-5-ratul-saha-bc1z1l8mv.vercel.app/).
 - GitHub at this point.
 - Comments: None.
 
