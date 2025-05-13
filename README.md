@@ -112,5 +112,6 @@ Potential improvements:
 
 - [x] Known bug: If a modal is opened (let's say character), and then closed, and the user moves to a different page, the previous modal pops up in some cases uninvited. Fixed by nullifying the selected ID for a modal when the modal closes.
 
+- [ ] The number of items in a page of characters is 20 (can't change in the API call, it seems), which may make the alignment look a tad bit odd.
 
-
+- [ ] Nice to have: Skeleton for individual card when the data is loading.

@@ -7,6 +7,7 @@ import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { CharacterCard, CharacterData } from "./characterCard";
 import { useState } from "react";
 import { CharacterModal } from "./characterModal";
+import { SkeletonCardCharacter } from "./skeletonCard";
 
 interface CharactersListProps {
     charactersPage: number;
@@ -20,7 +21,23 @@ export const CharactersList = ({ charactersPage, changeCharacterPage }: Characte
         variables: { page: charactersPage },
     });
 
-    if (loading) return <Text>Loading...</Text>;
+    if (loading) return (
+        <Grid 
+            templateColumns={{
+                base: "1fr",
+                md: "repeat(2, 1fr)",
+                lg: "repeat(3, 1fr)",
+            }} 
+            gap={1}
+        >
+            {[...Array(20)].map((_, index) => (
+                <Box key={index}>
+                    <SkeletonCardCharacter />
+                </Box>
+            ))}
+        </Grid>
+        );
+
     if (error) return <Text>Sorry, something went wrong.</Text>;
 
     const { info, results } = data.characters;

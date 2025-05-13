@@ -13,7 +13,7 @@ export const CharacterCard = ({ character }: { character: CharacterData }) => {
         <Card.Root flexDirection="row" overflow="hidden" maxW="xl" m={4}>
             <Image
             objectFit="cover"
-            maxW="150px"
+            maxW="120px"
             src={character.image}
             alt={character.name}
             />
