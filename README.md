@@ -108,7 +108,7 @@ Potential improvements:
 
 - [x] The `charactersList` file has a casing issue. The correct casing isn't cached, can be looked into later. Fixed by changing the filename for now.
 
-- [ ] The list of episodes in the character modal needs better handling when there are too many episodes for a character.
+- [ ] The list of episodes in the character modal needs better handling when there are too many episodes for a character. Similar for when a location has too many residents.
 
 
 

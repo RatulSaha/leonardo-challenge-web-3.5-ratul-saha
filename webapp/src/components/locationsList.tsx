@@ -6,6 +6,7 @@ import { Box, Text, ButtonGroup, IconButton, Pagination, Grid } from "@chakra-ui
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { LocationCard, LocationData } from "./locationCard";
 import { useState } from "react";
+import { LocationModal } from "./locationModal";
 
 interface LocationsListProps {
     locationsPage: number;
@@ -13,7 +14,7 @@ interface LocationsListProps {
 }
 
 export const LocationsList = ({ locationsPage, changeLocationPage }: LocationsListProps) => {
-    // const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
+    const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
     const { loading, error, data } = useQuery(GET_LOCATIONS, {
         variables: { page: locationsPage },
     });
@@ -33,7 +34,14 @@ export const LocationsList = ({ locationsPage, changeLocationPage }: LocationsLi
                 gap={1}
             >
                 {results.map((location: LocationData) => (
-                    <LocationCard key={location.id} location={location} />
+                    <Box 
+                        onClick={() => setSelectedItemId(location.id)}
+                        key={location.id}
+                        cursor="pointer"
+                        _hover={{ transform: 'scale(1.02)', transition: 'transform 0.2s' }}
+                    >
+                        <LocationCard key={location.id} location={location} />
+                    </Box>
                 ))}
             </Grid>
             <Box mt={4} display="flex" justifyContent="center">
@@ -61,6 +69,7 @@ export const LocationsList = ({ locationsPage, changeLocationPage }: LocationsLi
                     </ButtonGroup>
                 </Pagination.Root>
             </Box>
+            <LocationModal selectedItemId={selectedItemId} />
         </Box>
     );
 }; 

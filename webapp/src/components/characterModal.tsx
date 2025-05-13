@@ -30,7 +30,6 @@ export const CharacterModal = ({ selectedItemId }: { selectedItemId: string | nu
     const [character, setCharacter] = useState<FullCharacterData | null>(null);
     useEffect(() => {
         if (selectedItemId) {
-            console.log("selectedItemId", selectedItemId);
             setOpen(true);
             apolloClient.query({
                 query: GET_CHARACTER,
@@ -38,7 +37,6 @@ export const CharacterModal = ({ selectedItemId }: { selectedItemId: string | nu
             }).then((result) => {
                 const character = result.data.character;
                 setCharacter(character);
-                console.log(character);
             });
         }
     }, [selectedItemId]);
