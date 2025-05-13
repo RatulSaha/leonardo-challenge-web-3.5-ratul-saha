@@ -5,7 +5,7 @@ import { Box, Heading } from "@chakra-ui/react";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { Tabs } from "@chakra-ui/react"
-import { CharactersList } from "@/components/CharactersList";
+import { CharactersList } from "@/components/charactersList";
 import { LocationsList } from "@/components/locationsList";
 import { EpisodesList } from "@/components/episodesList";
 

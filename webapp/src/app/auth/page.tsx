@@ -2,17 +2,16 @@
 
 import { Box, Button, Heading, Input, VStack } from "@chakra-ui/react";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, Suspense } from "react";
 import { getAuthFromLocalStorage, setAuthInLocalStorage } from "@/lib/authFromLocalStorage";
 import { Toaster, toaster } from "@/components/ui/toaster";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function Auth() {
+function AuthContent() {
   const router = useRouter();
   const usernameRef = useRef<HTMLInputElement>(null);
   const jobTitleRef = useRef<HTMLInputElement>(null);
   const { username, jobTitle } = getAuthFromLocalStorage();
-
   const searchParams = useSearchParams();
   const hashedParam = searchParams?.get("q") ?? "";
 
@@ -52,5 +51,13 @@ export default function Auth() {
         <Button colorScheme="blue" width="full" onClick={handleSubmit}>Submit</Button>
       </VStack>
     </Box>
+  );
+}
+
+export default function Auth() {
+  return (
+    <Suspense fallback={<Box p={4}>Loading...</Box>}>
+      <AuthContent />
+    </Suspense>
   );
 }
