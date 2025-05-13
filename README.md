@@ -75,7 +75,7 @@ Success criteria:
 
 Output and findings (if any):
 
-- Deployed URL: Not deployed yet.
+- [Deployed URL](https://leonardo-challenge-web-3-5-ratul-saha-6ivqzfdm2.vercel.app).
 - Comments: None.
 
 ### v1.0: Individual information of a type can be opened by click
