@@ -35,6 +35,7 @@ Success criteria:
 - [x] The "auth" info will be stored in localstorage so that it is persisted over a session.
 - [x] From the `/auth` page, once the user details are saved, the users will be automatically forwarded to the `/information` page.
 - [x] Only the "auth'ed" user (i.e., those who submitted username and job title) can access the content in the `/information` page. This check will be more rigourously checked once the API is wired up in later milestones.
+- [x] (Missed in the first pass). The username and job title should be visible and editable by the user.
 - [ ] Separate `/404` and `/500` pages will be created to capture non-existent pages (404 error) and if a page render goes wrong with 500 error.
 
 Output and findings (if any):
@@ -119,3 +120,5 @@ Potential improvements:
 - [ ] Filters for each type can be added quite easily (and with persistent memory in URL).
 
 - [ ] There are some code-specific improvements marked as `TODO` within the code for now.
+
+- [ ] Updating username and job title could be better handled. Preferably in a separate page in `/profile` or so.
