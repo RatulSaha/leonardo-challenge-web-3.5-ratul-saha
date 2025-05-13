@@ -40,6 +40,7 @@ Success criteria:
 Output and findings (if any):
 
 - [Deployed URL](https://leonardo-challenge-web-3-5-ratul-saha-lc9caet0y.vercel.app/).
+- [GitHub at this point](https://github.com/RatulSaha/leonardo-challenge-web-3.5-ratul-saha/tree/4f1d1f7cff9ad0bb79b9d1a8c9aa16404f8d7505).
 - Comments: The customized 400 and 500 pages are not done in this round and will be pushed in subsequent milestones.
 
 ### v0.3: The information is listed without the ability to expand.
@@ -76,6 +77,7 @@ Success criteria:
 Output and findings (if any):
 
 - [Deployed URL](https://leonardo-challenge-web-3-5-ratul-saha-6ivqzfdm2.vercel.app).
+- [GitHub at this point](https://github.com/RatulSaha/leonardo-challenge-web-3.5-ratul-saha/tree/d0de293a84980568a9ac609bdebc6657c534a995).
 - Comments: None.
 
 ### v1.0: Individual information of a type can be opened by click
@@ -104,4 +106,9 @@ Potential improvements:
 
 - [ ] The redirect to auth could be better (currently have flash of unstyled content).
 
-- [ ] The `charactersList` file has a casing issue. The correct casing isn't cached, can be looked into later.
+- [x] The `charactersList` file has a casing issue. The correct casing isn't cached, can be looked into later. Fixed by changing the filename for now.
+
+- [ ] The list of episodes in the character modal needs better handling when there are too many episodes for a character.
+
+
+

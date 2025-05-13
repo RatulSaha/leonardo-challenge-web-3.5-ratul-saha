@@ -5,6 +5,7 @@ import { useQuery } from "@apollo/client";
 import { Box, Text, ButtonGroup, IconButton, Pagination, Grid } from "@chakra-ui/react";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { LocationCard, LocationData } from "./locationCard";
+import { useState } from "react";
 
 interface LocationsListProps {
     locationsPage: number;
@@ -12,6 +13,7 @@ interface LocationsListProps {
 }
 
 export const LocationsList = ({ locationsPage, changeLocationPage }: LocationsListProps) => {
+    const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
     const { loading, error, data } = useQuery(GET_LOCATIONS, {
         variables: { page: locationsPage },
     });

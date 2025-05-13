@@ -4,8 +4,9 @@ import { UserContext, UserContextType } from "@/context/UserContext";
 import { Box, Heading } from "@chakra-ui/react";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { useContext, useEffect, useState, Suspense } from "react";
-import { Tabs } from "@chakra-ui/react"
-import { CharactersList } from "@/components/CharactersList";
+import { Tabs } from "@chakra-ui/react";
+// @TODO: Fix this better. This naming inconsistency is to avoid the caching issue with the filename.
+import { CharactersList } from "@/components/charsList";
 import { LocationsList } from "@/components/locationsList";
 import { EpisodesList } from "@/components/episodesList";
 
@@ -35,13 +36,15 @@ function ExploreContent() {
   const [type, setType] = useState<string>(userState?.currentType ?? 'characters');
 
   useEffect(() => {
-    const hashedParam = encodeURIComponent(btoa(JSON.stringify({
-      characters: { page: Number(charactersPage) },
-      locations: { page: Number(locationsPage) },
-      episodes: { page: Number(episodesPage) },
+    const newHashedParam = encodeURIComponent(btoa(JSON.stringify({
+      characters: { page: charactersPage },
+      locations: { page: locationsPage },
+      episodes: { page: episodesPage },
       currentType: type
     })));
-    router.push(`/explore?q=${hashedParam}`);
+    if (newHashedParam !== hashedParam) {
+      router.push(`/explore?q=${newHashedParam}`);
+    }
   }, [charactersPage, locationsPage, episodesPage, type, router]);
 
   const triggerTabChange = (value: string) => {

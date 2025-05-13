@@ -5,6 +5,8 @@ import { useQuery } from "@apollo/client";
 import { Box, Text, ButtonGroup, IconButton, Pagination, Grid } from "@chakra-ui/react";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { CharacterCard, CharacterData } from "./characterCard";
+import { useState } from "react";
+import { CharacterModal } from "./characterModal";
 
 interface CharactersListProps {
     charactersPage: number;
@@ -12,6 +14,8 @@ interface CharactersListProps {
 }
 
 export const CharactersList = ({ charactersPage, changeCharacterPage }: CharactersListProps) => {
+    const [selectedItemId, setSelectedItemId] = useState<string | null>(null);
+    
     const { loading, error, data } = useQuery(GET_CHARACTERS, {
         variables: { page: charactersPage },
     });
@@ -31,7 +35,13 @@ export const CharactersList = ({ charactersPage, changeCharacterPage }: Characte
                 gap={1}
             >
                 {results.map((character: CharacterData) => (
-                    <CharacterCard key={character.id} character={character} />
+                    <Box 
+                        onClick={() => setSelectedItemId(character.id)}
+                        cursor="pointer"
+                        _hover={{ transform: 'scale(1.02)', transition: 'transform 0.2s' }}
+                    >
+                        <CharacterCard key={character.id} character={character} />
+                    </Box>
                 ))}
             </Grid>
             <Box mt={4} display="flex" justifyContent="center">
@@ -59,6 +69,7 @@ export const CharactersList = ({ charactersPage, changeCharacterPage }: Characte
                     </ButtonGroup>
                 </Pagination.Root>
             </Box>
+            <CharacterModal selectedItemId={selectedItemId} />
         </Box>
     );
 }; 
