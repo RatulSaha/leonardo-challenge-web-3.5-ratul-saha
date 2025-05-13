@@ -39,8 +39,8 @@ Success criteria:
 
 Output and findings (if any):
 
-- Deployed URL: Not deployed yet.
-- Comments: None.
+- [Deployed URL](https://leonardo-challenge-web-3-5-ratul-saha-lc9caet0y.vercel.app/).
+- Comments: The customized 400 and 500 pages are not done in this round and will be pushed in subsequent milestones.
 
 ### v0.3: The information is listed without the ability to expand.
 
