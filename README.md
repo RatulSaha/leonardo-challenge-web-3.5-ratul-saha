@@ -20,7 +20,7 @@ Success criteria:
 Output and findings (if any):
 
 - [Deployed URL](https://leonardo-challenge-web-3-5-ratul-saha-bc1z1l8mv.vercel.app/).
-- GitHub at this point.
+- [GitHub at this point](https://github.com/RatulSaha/leonardo-challenge-web-3.5-ratul-saha/tree/c491609649008b66990a61315be65816b00161c0).
 - Comments: None.
 
 ### v0.2: The required pages with auth set up.
