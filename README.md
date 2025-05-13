@@ -46,10 +46,32 @@ Output and findings (if any):
 
 Success criteria:
 
-- [ ] [The GraphQL API](https://rickandmortyapi.com/documentation/#graphql) is wired up with the FE at `/information`. Note that the GraphQL is implemented in FE and not server-side.
-- [ ] Three buttons provided to switch between Character, Location, and Episode (called `type` from now on).
-- [ ] Once a type is selected, the user is able to see list of items of that particular type. The URL should be of structure `type={type}&page={pagenumber}`.
-- [ ] A prev and next button is provided to paginate through the content. The prev and next buttons should be disabled accordingly when there are no content.
+- [ ] [The GraphQL API](https://rickandmortyapi.com/documentation/#graphql) is wired up with the FE at `/explore`. Note that the GraphQL is implemented in FE and not server-side.
+- [ ] (Improved after going deeper into the API) The content for characters, locations, and episodes (called `type` from now on) will be tabbed. Users can switch between the tabs, and paginate within each tab. In later versions, we can let users filter their results within a tab as well.
+- [ ] Since the API provides number of pages within the info (not always common in GraphQL APIs), we can do explicit paginations instead of only prev/next pagination. Users can then jump within any page within a type.
+- [ ] We intend to retain the entire user experience state within the URL. At any point of the user interaction, the URL will be unique to determine which page the user is on not only for the current tab, but all tabs.
+- [ ] If we design this right, we will be able to extend this feature to include remembering all filters of each tab as well in the URL.
+- [ ] The URL have to include — as a param — a JSON object containing the information of the user in which page (and later which filters applied). The design example of the JSON will be roughly as follows:
+
+```
+{
+    'characters': {
+        page: 3
+        // Later can be expanded to include individual filters as well
+    },
+    'locations': {
+        page: 2
+    },
+    'episodes': {
+        page: 4
+    }
+}
+```
+
+- [ ] This JSON uniquely represents the user state. We will encode this JSON (stringified) with base64 so that it can be two-way hashed. Note that we still will have to use `encodeURIComponent()` to ensure that the hash is URL-safe.
+
+- [ ] In the `/explore` page, if no JSON is present, the JSON will be defaulted to first page for all types.
+
 
 Output and findings (if any):
 
@@ -81,3 +103,5 @@ Potential improvements:
 - [ ] The error toast needs better styling. The padding is not being applied.
 
 - [ ] The redirect to auth could be better (currently have flash of unstyled content).
+
+- [ ] Kind of hardcoded that `/explore` starts with `/explore?type=characters` to make state management in URL easier. This can be done better with better handling of default state.

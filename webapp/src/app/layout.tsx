@@ -8,6 +8,13 @@ import { UserContext } from "@/context/UserContext";
 import { getAuthFromLocalStorage } from "@/lib/authFromLocalStorage";
 import { defaultSystem } from "@chakra-ui/react";
 import { ChakraProvider } from "@chakra-ui/react";
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+
+const apolloClient = new ApolloClient({
+  uri: "https://rickandmortyapi.com/graphql",
+  cache: new InMemoryCache(),
+});
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -37,20 +44,22 @@ export default function RootLayout({
       <UserContext.Provider
         value={{ username: username ?? null, jobTitle: jobTitle ?? null }}
       >
-        <body
-          className={`${geistSans.variable} ${geistMono.variable}`}
-          style={{
-            minHeight: "100vh",
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <ChakraProvider value={defaultSystem}>
-            <Header />
-            {children}
-            <Footer />
-          </ChakraProvider>
-        </body>
+        <ApolloProvider client={apolloClient}>
+          <body
+            className={`${geistSans.variable} ${geistMono.variable}`}
+            style={{
+              minHeight: "100vh",
+              display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            <ChakraProvider value={defaultSystem}>
+              <Header />
+              {children}
+              <Footer />
+            </ChakraProvider>
+          </body>
+        </ApolloProvider>
       </UserContext.Provider>
     </html>
   );

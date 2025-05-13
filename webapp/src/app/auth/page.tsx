@@ -2,14 +2,25 @@
 
 import { Box, Button, Heading, Input, VStack } from "@chakra-ui/react";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import { getAuthFromLocalStorage, setAuthInLocalStorage } from "@/lib/authFromLocalStorage";
 import { Toaster, toaster } from "@/components/ui/toaster";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export default function Auth() {
+  const router = useRouter();
   const usernameRef = useRef<HTMLInputElement>(null);
   const jobTitleRef = useRef<HTMLInputElement>(null);
+  const { username, jobTitle } = getAuthFromLocalStorage();
+
+  const searchParams = useSearchParams();
+  const hashedParam = searchParams?.get("q") ?? "";
+
+  useEffect(() => {
+    if (username && jobTitle) {
+      router.push(`/explore?q=${hashedParam}`);
+    }
+  }, [username, jobTitle, router, hashedParam]);
 
   const handleSubmit = () => {
     const username = usernameRef.current?.value;
@@ -23,13 +34,6 @@ export default function Auth() {
         type: "error",
       });
     }
-  };
-
-  const navigate = useRouter();
-  const { username, jobTitle } = getAuthFromLocalStorage();
-
-  if (username && jobTitle) {
-    navigate.push('/explore');
   };
 
   return (
