@@ -5,7 +5,6 @@ import { useQuery } from "@apollo/client";
 import { Box, Text, ButtonGroup, IconButton, Pagination, Grid } from "@chakra-ui/react";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
 import { EpisodeCard, EpisodeData } from "./episodeCard";
-import { useState } from "react";
 
 interface EpisodesListProps {
     episodesPage: number;

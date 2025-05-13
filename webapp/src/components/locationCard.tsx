@@ -1,4 +1,4 @@
-import { Box, Card, Image, Badge, HStack } from "@chakra-ui/react";
+import { Box, Card, Badge, HStack } from "@chakra-ui/react";
 
 export interface LocationData {
     id: string;
