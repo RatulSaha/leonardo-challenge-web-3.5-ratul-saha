@@ -4,8 +4,7 @@ import { GET_CHARACTERS } from "@/graphql/characters";
 import { useQuery } from "@apollo/client";
 import { Box, Text, ButtonGroup, IconButton, Pagination, Grid } from "@chakra-ui/react";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
-import { CharacterCard } from "./characterCard";
-import { useState } from "react";
+import { CharacterCard, CharacterData } from "./characterCard";
 
 interface CharactersListProps {
     charactersPage: number;
@@ -31,7 +30,7 @@ export const CharactersList = ({ charactersPage, changeCharacterPage }: Characte
                 }} 
                 gap={1}
             >
-                {results.map((character: any) => (
+                {results.map((character: CharacterData) => (
                     <CharacterCard key={character.id} character={character} />
                 ))}
             </Grid>

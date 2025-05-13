@@ -6,6 +6,7 @@ import { redirect, useRouter, useSearchParams } from "next/navigation";
 import { useContext, useEffect, useState } from "react";
 import { Tabs } from "@chakra-ui/react"
 import { CharactersList } from "@/components/charactersList";
+import { LocationsList } from "@/components/locationsList";
 
 type UserState = {
   characters: { page: number };
@@ -72,7 +73,7 @@ export default function Explore() {
             <CharactersList charactersPage={charactersPage} changeCharacterPage={setCharactersPage} />
           </Tabs.Content>
           <Tabs.Content value="locations">
-            {/* <LocationsList page={locationsPage} /> */}
+            <LocationsList locationsPage={locationsPage} changeLocationPage={setLocationsPage} />
           </Tabs.Content>
           <Tabs.Content value="episodes">
             {/* <EpisodesList page={episodesPage} /> */}
