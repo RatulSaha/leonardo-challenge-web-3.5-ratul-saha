@@ -117,3 +117,5 @@ Potential improvements:
 - [x] Nice to have: Skeleton for individual card when the data is loading. Done, but could be better.
 
 - [ ] Filters for each type can be added quite easily (and with persistent memory in URL).
+
+- [ ] There are some code-specific improvements marked as `TODO` within the code for now.
