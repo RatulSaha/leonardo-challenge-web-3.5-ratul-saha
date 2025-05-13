@@ -3,7 +3,7 @@
 import { UserContext, UserContextType } from "@/context/UserContext";
 import { Box, Heading } from "@chakra-ui/react";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, Suspense } from "react";
 import { Tabs } from "@chakra-ui/react"
 import { CharactersList } from "@/components/CharactersList";
 import { LocationsList } from "@/components/locationsList";
@@ -16,19 +16,16 @@ type UserState = {
   currentType: string;
 };
 
-export default function Explore() {
+function ExploreContent() {
   const router = useRouter();
   const { username, jobTitle } = useContext<UserContextType>(UserContext);
-
   const searchParams = useSearchParams();
   const hashedParam = searchParams?.get("q") ?? "";
 
-  // Retaining the user state in URL for continuity
   if (!username || !jobTitle) {
     redirect(`/auth?q=${hashedParam}`);
   }
 
-  
   const decodedParam = atob(decodeURIComponent(hashedParam));
   const userState: UserState = decodedParam ? JSON.parse(decodedParam) : null;
 
@@ -37,8 +34,6 @@ export default function Explore() {
   const [episodesPage, setEpisodesPage] = useState<number>(userState?.episodes?.page ?? 1);
   const [type, setType] = useState<string>(userState?.currentType ?? 'characters');
 
-  console.log("currentType", type);
-
   useEffect(() => {
     const hashedParam = encodeURIComponent(btoa(JSON.stringify({
       characters: { page: Number(charactersPage) },
@@ -46,7 +41,6 @@ export default function Explore() {
       episodes: { page: Number(episodesPage) },
       currentType: type
     })));
-    console.log("changing url to ", hashedParam);
     router.push(`/explore?q=${hashedParam}`);
   }, [charactersPage, locationsPage, episodesPage, type, router]);
 
@@ -82,5 +76,13 @@ export default function Explore() {
         </Tabs.Root>
       </div>
     </Box>
+  );
+}
+
+export default function Explore() {
+  return (
+    <Suspense fallback={<Box p={4}>Loading...</Box>}>
+      <ExploreContent />
+    </Suspense>
   );
 } 
