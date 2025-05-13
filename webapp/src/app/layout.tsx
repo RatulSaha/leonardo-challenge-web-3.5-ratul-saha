@@ -2,7 +2,6 @@
 
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Provider from "../context/chakraContext";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { UserContext } from "@/context/UserContext";
@@ -24,17 +23,28 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   const { username, jobTitle } = getAuthFromLocalStorage();
 
   return (
     <html lang="en">
       <head>
         <title>Rick and Morty World</title>
-        <meta name="description" content="A web app to explore the Rick and Morty universe" />
+        <meta
+          name="description"
+          content="A web app to explore the Rick and Morty universe"
+        />
       </head>
-      <UserContext.Provider value={{ username: username ?? null, jobTitle: jobTitle ?? null }}>
-        <body className={`${geistSans.variable} ${geistMono.variable}`} style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <UserContext.Provider
+        value={{ username: username ?? null, jobTitle: jobTitle ?? null }}
+      >
+        <body
+          className={`${geistSans.variable} ${geistMono.variable}`}
+          style={{
+            minHeight: "100vh",
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
           <ChakraProvider value={defaultSystem}>
             <Header />
             {children}
