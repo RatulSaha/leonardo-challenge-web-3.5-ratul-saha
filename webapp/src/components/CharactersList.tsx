@@ -4,14 +4,17 @@ import { GET_CHARACTERS } from "@/graphql/characters";
 import { useQuery } from "@apollo/client";
 import { Box, Text, ButtonGroup, IconButton, Pagination } from "@chakra-ui/react";
 import { LuChevronLeft, LuChevronRight } from "react-icons/lu";
+import { CharacterCard } from "./characterCard";
+import { useState } from "react";
 
 interface CharactersListProps {
-  page: number;
+    charactersPage: number;
+    changeCharacterPage: (page: number) => void;
 }
 
-export const CharactersList = ({ page }: CharactersListProps) => {
+export const CharactersList = ({ charactersPage, changeCharacterPage }: CharactersListProps) => {
     const { loading, error, data } = useQuery(GET_CHARACTERS, {
-        variables: { page },
+        variables: { page: charactersPage },
       });
 
     if (loading) return <Text>Loading...</Text>;
@@ -21,9 +24,13 @@ export const CharactersList = ({ page }: CharactersListProps) => {
     const { info, results } = data.characters;
     return (
         <Box>
-            {/* The table */}
+            <Box p={4} mt={4} display="flex" flexWrap="wrap" justifyContent="flex-start">
+                {results.map((character: any) => (
+                    <CharacterCard character={character} />
+                ))}
+            </Box>
             <Box p={4} mt={4}>
-                <Pagination.Root count={info.count} pageSize={10} defaultPage={page}>
+                <Pagination.Root count={info.count} pageSize={20} defaultPage={charactersPage} onPageChange={(data) => changeCharacterPage(data.page)}>
                     <ButtonGroup variant="ghost" size="sm">
                         <Pagination.PrevTrigger asChild>
                         <IconButton>

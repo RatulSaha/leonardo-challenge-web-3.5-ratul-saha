@@ -3,9 +3,9 @@
 import { UserContext, UserContextType } from "@/context/UserContext";
 import { Box, Heading } from "@chakra-ui/react";
 import { redirect, useRouter, useSearchParams } from "next/navigation";
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Tabs } from "@chakra-ui/react"
-import { CharactersList } from "@/components/CharactersList";
+import { CharactersList } from "@/components/charactersList";
 
 type UserState = {
   characters: { page: number };
@@ -69,7 +69,7 @@ export default function Explore() {
             </Tabs.Trigger>
           </Tabs.List>
           <Tabs.Content value="characters">
-            <CharactersList page={charactersPage} onPageChange={setCharactersPage} />
+            <CharactersList charactersPage={charactersPage} changeCharacterPage={setCharactersPage} />
           </Tabs.Content>
           <Tabs.Content value="locations">
             {/* <LocationsList page={locationsPage} /> */}
