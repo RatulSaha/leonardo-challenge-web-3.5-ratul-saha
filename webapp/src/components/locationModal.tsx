@@ -16,7 +16,7 @@ type FullLocationData = {
     created: string;
 }
 
-export const LocationModal = ({ selectedItemId }: { selectedItemId: string | null }) => {
+export const LocationModal = ({ selectedItemId, setSelectedItemId }: { selectedItemId: string | null, setSelectedItemId: (id: string | null) => void }) => {
     const [open, setOpen] = useState(false);
     const [location, setLocation] = useState<FullLocationData | null>(null);
     useEffect(() => {
@@ -33,7 +33,7 @@ export const LocationModal = ({ selectedItemId }: { selectedItemId: string | nul
     }, [selectedItemId]);
 
     return (
-        <Dialog.Root lazyMount open={open} onOpenChange={(e) => setOpen(e.open)} placement="center">
+        <Dialog.Root lazyMount open={open} onOpenChange={(e) => setOpen(e.open)} placement="center" onExitComplete={() => setSelectedItemId(null)}>
             <Portal>
                 <Dialog.Backdrop />
                 <Dialog.Positioner>

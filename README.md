@@ -84,10 +84,10 @@ Output and findings (if any):
 
 Success criteria:
 
-- [ ] Individual item can be clicked and a modal will open with all the details of the individual content.
-- [ ] After v0.3, more details about which field to be added in the modal will be listed here.
-- [ ] The content for the modal will be requested only after an item is clicked.
-- [ ] The modal can be closed without losing the pagination.
+- [x] Individual item can be clicked and a modal will open with all the details of the individual content.
+- [x] After v0.3, more details about which field to be added in the modal will be listed here.
+- [x] The content for the modal will be requested only after an item is clicked.
+- [x] The modal can be closed without losing the pagination.
 
 Output and findings (if any):
 
@@ -110,7 +110,7 @@ Potential improvements:
 
 - [ ] The list of episodes in the character modal needs better handling when there are too many episodes for a character. Similar for when a location has too many residents.
 
-- [ ] Known bug: If a modal is opened (let's say character), and then closed, and the user moves to a different page, the previous modal pops up in some cases uninvited.
+- [x] Known bug: If a modal is opened (let's say character), and then closed, and the user moves to a different page, the previous modal pops up in some cases uninvited. Fixed by nullifying the selected ID for a modal when the modal closes.
 
 
 

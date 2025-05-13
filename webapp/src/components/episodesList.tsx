@@ -69,7 +69,7 @@ export const EpisodesList = ({ episodesPage, changeEpisodePage }: EpisodesListPr
                     </ButtonGroup>
                 </Pagination.Root>
             </Box>
-            <EpisodeModal selectedItemId={selectedItemId} />
+            <EpisodeModal selectedItemId={selectedItemId} setSelectedItemId={setSelectedItemId} />
         </Box>
     );
 }; 

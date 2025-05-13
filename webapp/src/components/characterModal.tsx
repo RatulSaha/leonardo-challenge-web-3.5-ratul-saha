@@ -25,7 +25,7 @@ type FullCharacterData = {
     created: string;
 }
 
-export const CharacterModal = ({ selectedItemId }: { selectedItemId: string | null }) => {
+export const CharacterModal = ({ selectedItemId, setSelectedItemId }: { selectedItemId: string | null, setSelectedItemId: (id: string | null) => void }) => {
     const [open, setOpen] = useState(false);
     const [character, setCharacter] = useState<FullCharacterData | null>(null);
     useEffect(() => {
@@ -42,7 +42,7 @@ export const CharacterModal = ({ selectedItemId }: { selectedItemId: string | nu
     }, [selectedItemId]);
 
     return (
-        <Dialog.Root lazyMount open={open} onOpenChange={(e) => setOpen(e.open)} placement="center">
+        <Dialog.Root lazyMount open={open} onOpenChange={(e) => setOpen(e.open)} placement="center" onExitComplete={() => setSelectedItemId(null)}>
             <Portal>
                 <Dialog.Backdrop />
                 <Dialog.Positioner>

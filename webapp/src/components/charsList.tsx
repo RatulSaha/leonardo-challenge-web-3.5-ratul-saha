@@ -70,7 +70,7 @@ export const CharactersList = ({ charactersPage, changeCharacterPage }: Characte
                     </ButtonGroup>
                 </Pagination.Root>
             </Box>
-            <CharacterModal selectedItemId={selectedItemId} />
+            <CharacterModal selectedItemId={selectedItemId} setSelectedItemId={setSelectedItemId} />
         </Box>
     );
 }; 

@@ -69,7 +69,7 @@ export const LocationsList = ({ locationsPage, changeLocationPage }: LocationsLi
                     </ButtonGroup>
                 </Pagination.Root>
             </Box>
-            <LocationModal selectedItemId={selectedItemId} />
+            <LocationModal selectedItemId={selectedItemId} setSelectedItemId={setSelectedItemId} />
         </Box>
     );
 }; 

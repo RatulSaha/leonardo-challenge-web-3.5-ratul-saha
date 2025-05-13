@@ -1,7 +1,7 @@
 "use client";
 
 import { GET_EPISODE } from "@/graphql/episodes";
-import { Badge, Box, Card, CloseButton, Dialog, HStack, Portal, VStack } from "@chakra-ui/react";
+import { Badge, Box, Card, CloseButton, Dialog, Portal, VStack } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import { apolloClient } from "@/context/apolloContext";
 
@@ -17,7 +17,7 @@ type FullEpisodeData = {
     created: string;
 }
 
-export const EpisodeModal = ({ selectedItemId }: { selectedItemId: string | null }) => {
+export const EpisodeModal = ({ selectedItemId, setSelectedItemId }: { selectedItemId: string | null, setSelectedItemId: (id: string | null) => void }) => {
     const [open, setOpen] = useState(false);
     const [episode, setEpisode] = useState<FullEpisodeData | null>(null);
     useEffect(() => {
@@ -34,7 +34,7 @@ export const EpisodeModal = ({ selectedItemId }: { selectedItemId: string | null
     }, [selectedItemId]);
 
     return (
-        <Dialog.Root lazyMount open={open} onOpenChange={(e) => setOpen(e.open)} placement="center">
+        <Dialog.Root lazyMount open={open} onOpenChange={(e) => setOpen(e.open)} placement="center" onExitComplete={() => setSelectedItemId(null)}>
             <Portal>
                 <Dialog.Backdrop />
                 <Dialog.Positioner>
