@@ -32,9 +32,9 @@ Success criteria:
 - [x] The `/explore` page can be accessed only if the user provides username and job title.
 - [x] The `/auth` page is created to capture the username and job title.
 - [x] The username can only include alphanumeric and the job title can be free flow text. Both will have a limit of 32 characters.
-- [ ] The "auth" info will be stored in localstorage so that it is persisted over a session.
-- [ ] From the `/auth` page, once the user details are saved, the users will be automatically forwarded to the `/information` page.
-- [ ] Only the "auth'ed" user (i.e., those who submitted username and job title) can access the content in the `/information` page. This check will be more rigourously checked once the API is wired up in later milestones.
+- [x] The "auth" info will be stored in localstorage so that it is persisted over a session.
+- [x] From the `/auth` page, once the user details are saved, the users will be automatically forwarded to the `/information` page.
+- [x] Only the "auth'ed" user (i.e., those who submitted username and job title) can access the content in the `/information` page. This check will be more rigourously checked once the API is wired up in later milestones.
 - [ ] Separate `/404` and `/500` pages will be created to capture non-existent pages (404 error) and if a page render goes wrong with 500 error.
 
 Output and findings (if any):
@@ -70,6 +70,14 @@ Output and findings (if any):
 - Deployed URL: Not deployed yet.
 - Comments: None.
 
-Stray findings:
+Potential improvements:
 
-- [ ]
+- [ ] Currently, it is assumed that only `/explore` page needs to be authed. If and when there are more auth'ed pages, we should do the following: (1) ensure to remember (likely in a URL param) which page the user is coming from and then forwarding them back there after `/auth` is done, (2) standardize the guards for checking if auth exists.
+
+- [ ] There is no provision to update the username and job title once provided.
+
+- [ ] Currently, there is no database or persistant storage for the user's username and job title, only localstorage.
+
+- [ ] The error toast needs better styling. The padding is not being applied.
+
+- [ ] The redirect to auth could be better (currently have flash of unstyled content).

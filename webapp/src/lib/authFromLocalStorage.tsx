@@ -11,4 +11,5 @@ export const setAuthInLocalStorage = (username: string, jobTitle: string) => {
   
   localStorage.setItem("username", username);
   localStorage.setItem("jobTitle", jobTitle);
+  window.location.reload();
 };

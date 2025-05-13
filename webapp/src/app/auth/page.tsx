@@ -3,8 +3,9 @@
 import { Box, Button, Heading, Input, VStack } from "@chakra-ui/react";
 import { FormControl, FormLabel } from "@chakra-ui/form-control";
 import { useRef } from "react";
-import { setAuthInLocalStorage } from "@/lib/authFromLocalStorage";
-import { toaster } from "@/components/ui/toaster"
+import { getAuthFromLocalStorage, setAuthInLocalStorage } from "@/lib/authFromLocalStorage";
+import { Toaster, toaster } from "@/components/ui/toaster";
+import { useRouter } from "next/navigation";
 
 export default function Auth() {
   const usernameRef = useRef<HTMLInputElement>(null);
@@ -16,15 +17,24 @@ export default function Auth() {
     if (username && jobTitle) {
       setAuthInLocalStorage(username, jobTitle);
     } else {
-        toaster.create({
-            title: `Please fill in both the username and job title.`,
-            type: "error",
-          });
-    };
+      toaster.create({
+        title: "Error",
+        description: "Please fill in both the username and job title.",
+        type: "error",
+      });
+    }
+  };
+
+  const navigate = useRouter();
+  const { username, jobTitle } = getAuthFromLocalStorage();
+
+  if (username && jobTitle) {
+    navigate.push('/explore');
   };
 
   return (
     <Box p={4} maxW="400px" mx="auto" mt={8}>
+      <Toaster />
       <VStack gap={6}>
         <Heading size="lg">Enter your details</Heading>
         <FormControl>
